@@ -1,4 +1,3 @@
-import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 import type { Movie } from '../types/movie';
 
@@ -11,7 +10,7 @@ interface MoviesResponse {
 
 export async function fetchMovies(query: string): Promise<Movie[]> {
   try {
-    const response: AxiosResponse<MoviesResponse> = await axios.get(API_URL, {
+    const response = await axios.get<MoviesResponse>(API_URL, {
       params: {
         query,
         language: 'en-US',
